@@ -7,6 +7,33 @@
         mc:Ignorable="d"
         Title="Отражение" Height="600" Width="800" Background="#CCCCCC">
     <StackPanel>
-        <Image Source="Data/original.jpeg" Width="200" Height="270" x:Name="myImage"/>
+        <Border BorderBrush="White" BorderThickness="5" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Image Source="Data/original.jpeg" Width="200" Height="270" x:Name="myImage"/>
+            <Border.Effect>
+                <DropShadowEffect Color="Black" Direction="40" ShadowDepth="20" Opacity="0.4"/>
+            </Border.Effect>
+            <Border.RenderTransform>
+                <SkewTransform CenterX="0" CenterY="0" AngleX="0" AngleY="10"/>
+            </Border.RenderTransform>
+        </Border>
+        <Border Width="210" Height="270">
+            <Border.Background>
+                <VisualBrush Visual="{Binding ElementName=myImage}">
+                    <VisualBrush.Transform>
+                        <ScaleTransform ScaleX="1" ScaleY="-1" CenterX="200" CenterY="150">
+                        </ScaleTransform>
+                    </VisualBrush.Transform>
+                </VisualBrush>
+            </Border.Background>
+            <Border.OpacityMask>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Offset="0" Color="Black"></GradientStop>
+                    <GradientStop Offset="0.6" Color="Transparent"></GradientStop>
+                </LinearGradientBrush>
+            </Border.OpacityMask>
+            <Border.RenderTransform>
+                <SkewTransform CenterX="30" CenterY="2" AngleX="-30" AngleY="10"/>
+            </Border.RenderTransform>
+        </Border> 
     </StackPanel>
 </Window>
